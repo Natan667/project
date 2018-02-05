@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/HH_Train_%281967-1972%29.svg/1000px-HH_Train_%281967-1972%29.svg.png" type="image/x-icon">
+    <title><%= content_for?(:title) ? yield(:title) : "HelthyHub" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <%= javascript_include_tag "application" %>
+  </head>
+<body>
+<% if current_page?(new_user_registration_path) %>
+<% else %>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to("Healthy Hub", root_path, class: 'navbar-brand')%>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+            <ul class="nav navbar-nav">
+              <li>
+                          <%= link_to("Messages", conversations_path, html_options = {class: "link"}) %>
+                
+              </li>
+
+              <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle link">
+                          Posts 
+                          <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu bordertmpl">
+                          <li><%= link_to("New post", new_post_path, html_options = {class: "link"}) %></li>
+                          <li class="divider" style="background-color:white"></li>
+                          <li><%= link_to("Your posts", posts_path, html_options = {class: "link"}) %></li>
+                          <li><%= link_to("Liked posts", favourite_path, html_options = {class: "link"}) %></li>
+                        </ul>
+              </li>
+
+              <li>
+                  <%= link_to("Search", search_path, html_options = {class: "link"}) %>
+              </li>
+
+              <li>
+                  <%= link_to("Gallery", picture_path(current_user), html_options = {class: "link"}) %>
+              </li>
+
+              <li>
+                  <%= link_to("Blog", blog_path, html_options = {class: "link"}) %>
+              </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="color: #ffe;">
+                      <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle link">
+                            <i class="fa fa-bell" style="font-size: 20px; padding: 0"></i>
+                            <span  id="notification-counter"><%= @notifications.count %></span>
+                          <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu bordertmpl" style="margin-right: 5px; margin-left: 5px">
+                          <%= render "layouts/notifications" %>
+                        </ul>
+                      </li>
+              <li style="color:grey;padding-top: 8px">
+                  <div class="col-lg-12 link">
+                    <%= link_to 'Profile', profile_path(current_user), class: "btn btn-primary" %> || 
+                    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %> 
+                  </div>
+              </li>
+              <div class="hidden-xs" style="margin-right: 300px"></div>
+              
+            </ul>
+          </div>
+  </div>
+
+<% if current_page?(profile_path) %>
+<div class="hidden-xs hidden-md hidden-sm">
+  <div class="col-lg-3 col-xs-12 col-md-12 col-sm-12 scrol">
+    <% if current_user == @user %>
+      <h3 style="text-align: center; margin-top: 20px">Your posts</h3>
+      <% else %>
+      <h3 style="text-align: center; margin-top: 20px"><%= @user.username %>'s posts</h3>
+      <% end %>
+     <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <%= link_to post_path(post.id, post.author.id) do %>    
+          <% if post.post_photo? %>
+            <div class="blog">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-category="view" style="padding-left: 0">
+                      <div class="hovereffect">
+                        <div class="card w-75">
+                          <div class="card-block"> 
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 blogmar">
+                                <div class="widthh hover07">
+                                  <figure>
+                                      <%= image_tag(post.post_photo.url, :class => 'widthh')%>
+                                  </figure>
+                                  <div class="overlay">
+                                     <h2  style="padding: 10px !important; font-size: 23px !important"><%= post.title %></h2>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+      <div class="notification">
+        <h4 style="text-align: center;margin-top: 20px">No posts yet</h4>
+      </div>
+    <% end %>
+        </div>
+    </div>
+<% else %>
+  <div class="row-offcanvas row-offcanvas-left">
+    <div id="sidebar" class="sidebar-offcanvas">
+        <div class="col-md-12" style="margin-top: 100px">
+          <%= link_to profile_path(current_user) do %>
+            <%= image_tag(current_user.avatar.url, :class => 'sidebarimg dis')%>
+            <h5 class="text-center" style="color: black">Hi, <%= current_user.username %>!</h5>
+          <% end %>
+          <div class="col-lg-12 col-md-12 col-sm-12 divider text-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 emphasis">
+                    <h2><strong><%= current_user.followers(User).count %></strong></h2>                  
+                    <p><small>Followers</small></p>
+                    <%= link_to('<i class="fa fa-picture-o" aria-hidden="true"></i>
+Gallery'.html_safe, picture_path(current_user), class: 'btn button2 btn-info btn-block', style: 'text-decoration:none; color:white')%>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 emphasis">
+                  <h2><strong><%= current_user.posts.count %></strong></h2>                    
+                    <p><small>Posts</small></p>
+                                <%= link_to('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+New post'.html_safe, new_post_path, class: 'btn btn-info button2 btn-block', style: 'text-decoration:none; color:white')%>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 emphasis">
+                  <h2><strong><%= current_user.followees(User).count %></strong></h2>                    
+                    <p><small>Following</small></p>
+                                <%= link_to('<i class="fa fa-user-circle" aria-hidden="true"></i>
+Edit profile'.html_safe, edit_profile_path(current_user), class: 'btn button2 btn-success btn-block', style: 'text-decoration:none; color:white')%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% end %>
+<% end %>
+
+
+      <div style="overflow: hidden;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="hidden-xs" style="margin-top: 20px"></div>
+          <%= bootstrap_flash %>
+          <%= yield %>    
+        </div>
+
+        <footer class="container hidden-xs footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <p>&copy; HealthyHub 2017</p>
+        </footer>
+      </div>
+    </div>
+        
+
+  </body>
+</html>

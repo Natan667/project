@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <title><%= content_for?(:title) ? yield(:title) : "Три бобра" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body class="bodystrartpage">
+  <div id="mask"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          
+          <div class="col-lg-4 col-sm-3 col-md-3 col-xs-12">
+          </div>
+
+          <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12">
+           <div class="panel panel-default devise-bs">
+            <%= bootstrap_flash style: "margin-bottom:0" %>
+              <div class="panel-heading col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 showSingle" target="1" style="text-align: center;">
+                    <h4><%= label_tag('Sign in') %></h4>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 showSingle" target="2" style="text-align: center;">
+                    <h4><%= label_tag('Sign up') %></h4>
+                  </div>
+              </div>
+              <div class="panel-body targetDiv" id="div1">
+                <%= render "sign_in" %>
+              </div> 
+              <div class="panel-body targetDiv" style="display:none"  id="div2">
+                <%= render "sign_up" %>
+              </div>
+            </div>
+          </div>
+
+       </div>
+      </div>
+      <footer class="container">
+        <p style="color: white">&copy; Три бобра 2018</p>
+      </footer>
+    </div>
+  </body>
+</html>

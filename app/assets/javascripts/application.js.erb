@@ -1,0 +1,149 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
+// vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require rails-ujs
+//= require bootstrap-init
+
+//= require paper
+//= require demo
+//= require radio
+//= require notify
+
+//= require_tree .
+//= require magnific-popup
+
+
+(function() {
+  $(document).on('click', '.toggle-window', function(e) {
+    e.preventDefault();
+    var panel = $(this).parent().parent();
+    var messages_list = panel.find('.messages-list');
+
+    panel.find('.panel-body').toggle();
+    panel.attr('class', 'panel panel-default');
+
+    if (panel.find('.panel-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
+})();
+//= require twitter/bootstrap
+
+
+$(function() {
+  var imageUpload = document.getElementById("imageUpload");
+  var gallery = document.getElementById("gallery");
+
+   $("#imageUpload").change(function() {
+     $("#gallery").submit();
+   });
+ });
+
+
+$(document).ready(function(){
+
+$('.upload-group input').change(function () {
+  $('.upload-group p').text(this.files.length + " file(s) selected");
+});
+
+$('.popup-gallery').magnificPopup({
+    delegate: 'a.image',
+    type: 'image',
+    tLoading: 'Loading image #%curr%...',
+    mainClass: 'mfp-img-mobile',
+    gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0,1]
+    }
+  });
+
+  
+
+  var id = window.location.href.split("=").slice(1)[0];
+  if ( id == parseInt(id))
+  {
+      $('[data-foo="' + id + '"]')[0].click();
+  };
+
+  $("#reset").on("click", function () {
+    $("#search").val("");
+    $("#search_button").click();
+  });
+    
+  $('#textarea_mas').keypress(function(e){
+    if(e.which == 13){
+      $(this).parents('form').submit();
+    }
+  });
+
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+        jQuery('#damn').show();
+    }
+    
+    $("#imageUpload").change(function(){
+        readURL(this);
+
+    });
+
+ jQuery(document).ready(function(){
+    jQuery('#hideshow').on('click', function(event) {        
+         jQuery('#content').toggle('show');
+    });
+  });
+
+    jQuery('#editbuttons').on('click', function(event) {        
+         jQuery('.editgallery').fadeToggle( "linear", "linear" );
+    });
+
+    $('#back').animate({opacity: 0}, 0).css({'background-image': 'url(http://vaughnroyko.com/jsfiddle/back.png)'}).animate({opacity: 1}, 2500);
+
+ jQuery(function(){
+        jQuery('.commenttoogle').click(function(){
+          var id = $(this).attr("id");
+          $('[target='+ id +']').toggle("slow");
+        });
+  });
+
+
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+ 
+  $(".navbar-toggle").on("click", function () {
+    $(this).toggleClass("active");
+  });
+
+  jQuery(function(){
+        jQuery('.showSingle').click(function(){
+              jQuery('.targetDiv').hide();
+              jQuery('#div' + $(this).attr('target')).show();
+        });
+  });
+
+  
+
+});
+
+
+

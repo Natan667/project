@@ -1,0 +1,17 @@
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  font-family: Centro Sans pro;
+}
+
+.stpadding{
+  padding: 0 15% 0 15%;
+}
+
+.bodystrartpage {
+    background: url(https://www.mitacs.ca/sites/all/themes/mitacs/images/parallax-bg-green.jpg);
+    background-size: cover;
+    padding: 80px 0;
+    height: 100%;
+}
