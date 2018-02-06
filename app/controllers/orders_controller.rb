@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   
   def create
     @order = current_user.orders.build
-    if @order.update_attributes order_params      
+    if @order.update_attributes order_params
       redirect_to order_path(@order.id, @order.author.id), flash: { success: 'Created done'}
     else
       render :new
@@ -42,6 +42,6 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:title, :description, :order_photo)
+    params.require(:order).permit(:title, :description, :car, :get)
   end
 end
