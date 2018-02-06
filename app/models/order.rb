@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :author, class_name: "User"
-	has_and_belongs_to_many :details
+	has_many :details_orders
+	has_many :details, :through => :details_orders
 
 	def self.search(search)
     	where("lower(title) LIKE ?", "%#{search}%")

@@ -9,5 +9,4 @@ class User < ApplicationRecord
     
   has_many :details, foreign_key: :author_id
   has_many :orders, foreign_key: :author_id
-  
 end
