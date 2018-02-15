@@ -1,14 +1,14 @@
 <%- model_class = Order -%>
 <div class="page-header">
   <h1>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>   <%= link_to t('.new', :default => t("helpers.links.new")),
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>   
+      <%= link_to t('.new', :default => t("helpers.links.new")),
             new_order_path,
             :class => 'btn btn-primary' %>
-              
   </h1>
 
 <div id="custom-search-input">
-  <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-offset-2">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-right: 0">
       <%= form_tag(orders_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag(:search, params[:search], placeholder: "Search", id: "search", class: "search-query form-control") %>
@@ -54,5 +54,4 @@
       </tr>
     <% end %>
   </tbody>
-
 </table>
