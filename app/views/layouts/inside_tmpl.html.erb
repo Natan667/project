@@ -12,7 +12,6 @@
     <%= javascript_include_tag "application" %>
     <!--  Fonts and icons     -->
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -38,7 +37,7 @@
                         <p>Dashboard</p>
                     <% end %>
                 </li>
-                <% if current_page?(details_path) %>
+                <% if current_controller?('details') %>
                     <li class="active">
                 <% else %>
                     <li>
@@ -48,7 +47,7 @@
                         <p>Details</p>
                     <% end %>
                 </li>
-                <% if current_page?(orders_path) %>
+                <% if current_controller?('orders') %>
                     <li class="active">
                 <% else %>
                     <li>

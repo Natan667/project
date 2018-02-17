@@ -26,8 +26,13 @@
 $(document).ready(function(){
 
 $("#addDetail").click(function(){
+    $("#reset").show();
     $("#select").clone().appendTo(".sh");
     $(".sh").show( "linear", "linear" );
+});
+
+$("#reset").click(function(){
+	$("#x").remove();
 });
 
 jQuery(function(){

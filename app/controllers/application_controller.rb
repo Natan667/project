@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :notification
+  helper_method :current_controller?
 
   protected
 
@@ -12,7 +13,9 @@ class ApplicationController < ActionController::Base
     @notifications = Notification.where(recipient: current_user).where.not(author: current_user).reverse
   end
 
-  
+  def current_controller?(names)
+    names.include?(params[:controller]) unless params[:controller].blank? || false
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |user_params|

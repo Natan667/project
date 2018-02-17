@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build
     if @order.update_attributes order_params
+       @order.details.build
       redirect_to order_path(@order.id, @order.author.id), flash: { success: 'Created done'}
     else
       render :new
@@ -21,6 +22,7 @@ class OrdersController < ApplicationController
   def update
     @order =  current_user.orders.find(params[:id])
     if @order.update_attributes order_params
+      @order.details.build
       redirect_to order_path(@order.id, @order.author.id), flash: { success: 'Updated done'}
     else
       render :edit
@@ -42,6 +44,6 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:title, :description, :car, :get, :name)
+    params.require(:order).permit(:title, :description, :car, :get, :name, :details_orders_attributes => [:detail_id, :order_id])
   end
 end
