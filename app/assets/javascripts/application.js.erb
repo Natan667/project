@@ -16,30 +16,9 @@
 
 //= require paper
 //= require demo
+//= require main
 //= require radio
 //= require notify
 
 //= require_tree .
 //= require magnific-popup
-
-
-$(document).ready(function(){
-
-$("#addDetail").click(function(){
-    $("#reset").show();
-    $("#select").clone().appendTo(".sh");
-    $(".sh").show( "linear", "linear" );
-});
-
-$("#reset").click(function(){
-	$("#x").remove();
-});
-
-jQuery(function(){
-        jQuery('.showSingle').click(function(){
-              jQuery('.targetDiv').hide();
-              jQuery('#div' + $(this).attr('target')).show();
-        });
-  });
-
-});
