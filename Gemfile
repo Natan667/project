@@ -9,6 +9,7 @@ end
 gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18.4'
 gem 'redis', '~> 4.0.1'
+gem 'rails-jquery-tokeninput'
 gem 'actioncable'
 gem "socialization"
 gem 'jquery-rails'

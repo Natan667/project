@@ -21,4 +21,5 @@
  *= require themify
  *= require_self
  *= require magnific-popup
+ *= require token-input-facebook
  */

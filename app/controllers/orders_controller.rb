@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   
   def create
     @order = current_user.orders.build
+
     if @order.update_attributes order_params
        @order.details.build
       redirect_to order_path(@order.id, @order.author.id), flash: { success: 'Created done'}
