@@ -9,6 +9,9 @@ html, body{
   padding: 0 15% 0 15%;
 }
 
+.form-horizontal .form-group {
+    margin-left: 0;
+
 .bodystrartpage {
     background: url(https://www.mitacs.ca/sites/all/themes/mitacs/images/parallax-bg-green.jpg);
     background-size: cover;
