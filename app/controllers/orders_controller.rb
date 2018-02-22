@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   
   def create
     @order = current_user.orders.build
-
     if @order.update_attributes order_params
        @order.details.build
       redirect_to order_path(@order.id, @order.author.id), flash: { success: 'Created done'}
@@ -36,6 +35,9 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
+    @ordersnew = current_user.orders.where(status: "New").search(params[:search]).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
+    @ordersprocessed = current_user.orders.where(status: "Processed").search(params[:search]).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
+    @ordersarchieve = current_user.orders.where(status: "Archieve").search(params[:search]).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
   end
  
   def destroy

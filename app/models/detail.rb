@@ -6,4 +6,5 @@ class Detail < ApplicationRecord
 	def self.search(search)
     	where("lower(title) LIKE ?", "%#{search}%")
   	end
+
 end

@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :title, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
-      <%= f.text_field :title, :class => 'form-control maxlength', :maxlength => 60 %>
+      <%= f.text_field :title, :class => 'form-control maxlength', :maxlength => 60, autofocus: true, required: true %>
     </div>
     <%=f.error_span(:title) %>
   </div>
@@ -26,7 +26,7 @@
   <div class="form-group">
     <%= f.label :car, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
-      <%= f.text_field :car, :class => 'form-control maxlength', :maxlength => 60 %>
+      <%= f.text_field :car, :class => 'form-control maxlength', :maxlength => 60, required: true %>
     </div>
     <%=f.error_span(:car) %>
   </div>
@@ -34,25 +34,27 @@
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
-      <%= f.text_field :name, :class => 'form-control maxlength', :maxlength => 60 %>
+      <%= f.text_field :name, :class => 'form-control maxlength', :maxlength => 60, required: true %>
     </div>
     <%=f.error_span(:name) %>
   </div>
 
   <div class="form-group">
-      <%= f.label :detail, :class => 'control-label col-lg-2 col-xs-12' %>
+      <%= f.label :details, :class => 'control-label col-lg-2 col-xs-12' %>
       <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
-          <%= select_tag 'order[detail_ids][]', options_for_select(Detail.all.map {|x| [x.title, x.id]}), include_blank: true %>
+        <%= render 'detail' %>
       </div>
     <%=f.error_span(:details) %>
   </div>
-  
-  <div class="form-group">
-    <div class="col-lg-offset-3 col-lg-7 col-md-8 col-xs-8 col-sm-8">
-      <input type="button" id="addDetail" class="btn btn-default btn-success" value="Add detail">
-    </div>
-  </div>
 
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
+      <%= f.select :status, options_for_select([ "New", "Processed", "Archieve" ], f.object.status) %>
+    </div>
+    <%=f.error_span(:status) %>
+  </div>
+  
   <div class="form-group">
     <%= f.label :description, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">

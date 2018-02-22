@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :title, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
-      <%= f.text_field :title, :class => 'form-control maxlength', :maxlength => 60, autofocus: true %>
+      <%= f.text_field :title, :class => 'form-control maxlength', :maxlength => 60, autofocus: true, required: true %>
     </div>
     <%=f.error_span(:title) %>
   </div>

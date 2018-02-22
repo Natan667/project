@@ -7,26 +7,25 @@
             :class => 'btn btn-primary' %>
   </h1>
 
-<div id="custom-search-input">
-  <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12  col-lg-offset-2">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-right: 0">
-      <%= form_tag(details_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag(:search, params[:search], placeholder: "Search", id: "search", class: "search-query form-control") %>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0">
-      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-          <%= button_tag(type: "submit", class: "btn btn-default", id: "search_button", style: "border-color: transparent") do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
+  <div id="custom-search-input">
+    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12  col-lg-offset-2">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-right: 0">
+        <%= form_tag(details_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search", id: "search", class: "search-query form-control") %>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <button style="border-color: transparent" id="reset" class="btn btn-default">X</button>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <%= button_tag(type: "submit", class: "btn btn-default", id: "search_button", style: "border-color: transparent") do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <button style="border-color: transparent" id="reset" class="btn btn-default">X</button>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <% end %>
-    </div>
   </div>
-</div>
-
 </div>
 <table class="table table-striped">
   <thead>

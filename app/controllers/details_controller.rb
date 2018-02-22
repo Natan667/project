@@ -36,13 +36,13 @@ class DetailsController < ApplicationController
   end
  
   def destroy
-    @detail = Detail.find(params[:id])
+    @detail = current_user.details.find(params[:id])
     @detail.destroy
     redirect_to details_path, flash: { success: 'Detail destroyed'}
   end
   
   def detail_params
-    params.require(:detail).permit(:title, :description, :detail_photo)
+    params.require(:detail).permit(:title, :description)
   end
   
   

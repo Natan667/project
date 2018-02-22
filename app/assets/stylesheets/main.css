@@ -9,8 +9,22 @@ html, body{
   padding: 0 15% 0 15%;
 }
 
+.status-new{
+  display: none;
+} 
+.status-processed{
+  display: none;
+} 
+.status-archieve{
+  display: none;
+}
+
 .form-horizontal .form-group {
     margin-left: 0;
+  }
+
+  .page-header{
+     border-color: #dbdad8;
   }
 
 .bodystrartpage {
