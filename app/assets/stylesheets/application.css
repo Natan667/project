@@ -18,6 +18,7 @@
  *= require animate
  *= require demo
  *= require paper
+ *= require jquery-ui
  *= require themify
  *= require_self
  *= require magnific-popup

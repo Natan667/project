@@ -145,10 +145,7 @@ body {
     min-height: 100vh;
     position: relative; }
 
-a {
-  color: #68B3C8; }
   a:hover, a:focus {
-    color: #3091B2;
     text-decoration: none; }
 
 a:focus, a:active,

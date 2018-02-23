@@ -10,9 +10,10 @@ gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18.4'
 gem 'redis', '~> 4.0.1'
 gem 'actioncable'
+gem 'jquery-rails', '~> 4.3'
+gem 'jquery-ui-rails'
 gem "socialization"
 gem 'pg_search'
-gem 'jquery-rails'
 gem "paperclip-ffmpeg", "~> 1.0.1"
 gem 'magnific-popup-rails', '~> 1.1.0'
 # Use Puma as the app server

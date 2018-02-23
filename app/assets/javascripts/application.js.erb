@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require jquery-ui
 //= require bootstrap-init
 
 //= require paper
 //= require demo
-//= require main
 //= require radio
 //= require notify
 
@@ -39,9 +39,14 @@ $( document ).ready(function() {
 	jQuery(function(){
         jQuery('.stat').click(function(){
               jQuery('.stata').hide();
-              jQuery('.' + $(this).attr('id')).show();
+              var id = $(this).attr('id');
+              jQuery('.' + id).show();
+
+              var element = document.getElementById(id);
+              $("i.stat").removeClass("active");
+              $(element).addClass("active");
         });
   });
-
+  
 });
 

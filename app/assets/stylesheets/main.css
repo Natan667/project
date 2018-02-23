@@ -9,7 +9,17 @@ html, body{
   padding: 0 15% 0 15%;
 }
 
-.status-new{
+h3 > i{
+    color: #428bca;
+    cursor: pointer;
+}
+
+.active{
+  font-weight: bold;
+  color: #EB5E28;
+}
+
+.status-all{
   display: none;
 } 
 .status-processed{
