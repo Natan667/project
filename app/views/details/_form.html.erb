@@ -24,6 +24,47 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :producer, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-6 col-md-8 col-xs-8 col-sm-8">
+      <%= f.text_field :producer, :class => 'form-control maxlength', :maxlength => 60 %>
+    </div>
+    <%=f.error_span(:producer) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :original_num, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-6 col-md-8 col-xs-8 col-sm-8">
+      <%= f.text_field :original_num, :class => 'form-control maxlength', :maxlength => 60 %>
+    </div>
+    <%=f.error_span(:original_num) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :series_num, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-6 col-md-8 col-xs-8 col-sm-8">
+      <%= f.text_field :series_num, :class => 'form-control maxlength', :maxlength => 60 %>
+    </div>
+    <%=f.error_span(:series_num) %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :in_price, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-6 col-md-8 col-xs-8 col-sm-8">
+      <%= f.text_field :in_price, :class => 'form-control maxlength', :maxlength => 60, required: true %>
+    </div>
+    <%=f.error_span(:in_price) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sel_price, :class => 'control-label col-lg-2 col-xs-12' %>
+    <div class="col-lg-6 col-md-8 col-xs-8 col-sm-8">
+      <%= f.text_field :sel_price, :class => 'form-control maxlength', :maxlength => 60, required: true %>
+    </div>
+    <%=f.error_span(:sel_price) %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :description, :class => 'control-label col-lg-2 col-xs-12' %>
     <div class="col-lg-7 col-md-8 col-xs-8 col-sm-8">
       <%= f.text_area :description, :class => 'form-control', style: 'height:200px' %>

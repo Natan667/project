@@ -5,11 +5,13 @@ class Order < ApplicationRecord
 	has_many :details, :through => :details_orders, dependent: :destroy
 
   def default_values
+    self.details_quantity ||= 1
     self.status ||= 'New'
   end
 
-	def self.search(search)
+  def self.search(search)
     where("lower(car) LIKE ? OR lower(title) LIKE ? OR lower(name) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", )
   end
+
 
 end

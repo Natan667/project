@@ -13,12 +13,49 @@
                             <%= @detail.title %>
                           </div>
                       </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Producer</label>
+                          <div class="col-xs-10">
+                            <%= @detail.producer %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Original number</label>
+                          <div class="col-xs-10">
+                            <%= @detail.original_num %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Series number</label>
+                          <div class="col-xs-10">
+                            <%= @detail.series_num %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Inside price</label>
+                          <div class="col-xs-10">
+                            <%= number_to_currency(@detail.in_price, :unit=>'€') %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Sell price</label>
+                          <div class="col-xs-10">
+                            <%= number_to_currency(@detail.sel_price,:unit=>'₴') %>
+                          </div>
+                      </div>
+
                       <div class="form-group">
                           <label class="control-label col-xs-2">Description</label>
                           <div class="col-xs-10">
                             <%= @detail.description %>
                           </div>
                       </div>
+                      
                   </fieldset>
               </form>
 

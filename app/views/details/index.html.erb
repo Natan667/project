@@ -31,6 +31,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:sel_price) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -39,6 +40,7 @@
     <% @details.each do |detail| %>
       <tr>
         <td><h4 style="margin-top:10px"><%= detail.title %></h4></td>
+        <td><h4 style="margin-top:10px"><%= detail.sel_price %></h4></td>
         <td class="detailsbutton">
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       detail_path(detail), :class => 'btn btn-md btn-default', style: 'padding-right: 14px; padding-left:14px' %>

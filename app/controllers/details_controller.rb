@@ -32,7 +32,6 @@ class DetailsController < ApplicationController
   end
 
   def index
-    
     @details = current_user.details.search(params[:search]).paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
   end
  
@@ -43,7 +42,7 @@ class DetailsController < ApplicationController
   end
   
   def detail_params
-    params.require(:detail).permit(:title, :description)
+    params.require(:detail).permit(:title, :description, :producer, :original_num, :series_num, :in_price, :sel_price)
   end
   
   

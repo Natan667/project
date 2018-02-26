@@ -52,6 +52,14 @@
                             <%= @order.description %>
                           </div>
                       </div>
+
+                      <div class="form-group">
+                          <label class="control-label col-xs-2">Total</label>
+                          <div class="col-xs-10">
+                            <%= number_to_currency(@order, :unit => "₴") %>
+                          </div>
+                      </div>
+
                   </fieldset>
               </form>
 
